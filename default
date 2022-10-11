@@ -1,0 +1,20 @@
+upstream django {
+    server 13.233.232.207;
+}
+
+server {
+    listen      80;
+    server_name ec2-13-233-232-207.ap-south-1.compute.amazonaws.com;
+    charset     utf-8;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static {
+        alias /home/ec2-user/home/project/attendance_system/attendance_system/att_sys/;
+    }
+
+ 
+    location / {
+        uwsgi_pass  django;
+        include     /home/ec2-user/home/projects/uwsgi_params;
+    }
+}
