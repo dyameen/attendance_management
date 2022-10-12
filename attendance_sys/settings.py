@@ -32,7 +32,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['13.233.232.207','127.0.0.1']
 
-STATIC_ROOT = '/att_sys/static/'
 
 
 # Application definition
@@ -154,12 +153,10 @@ USE_TZ = True
 
 # Static files (css, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-STATIC_URL = '/static/'
+STATIC_ROOT = '/attendance_system/static/'
+STATIC_URL = 'static/'
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
-    # Extra lookup directories for collectstatic to find static files
+        BASE_DIR / "static",
 )
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

@@ -20,13 +20,13 @@
 
         <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
 
-<!--        <link href="/static/css/bootstrap.min.css" rel="stylesheet">-->
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
-        <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
+        <link href="{% static 'css/bootstrap-icons.css'%}" rel="stylesheet">
 
-        <link href="/static/css/magnific-popup.css" rel="stylesheet">
+        <link href="{% static 'css/magnific-popup.css'%}" rel="stylesheet">
 
-        <link href="/static/css/tooplate-tween-agency.css" rel="stylesheet">
+        <link href="{% static 'css/tooplate-tween-agency.css'%}" rel="stylesheet">
 
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -40,7 +40,7 @@
             <div class="container">
 
                 <a href="/att_sys/hrprofile" class="navbar-brand">
-                        <img height="50px" src="/static/images/heading.png">
+                        <img height="50px" src="{% static 'images/heading.png'%}">
                 </a>
 
                 <a href="/att_sys/logout" class="custom-btn btn btn-lg d-lg-none ms-auto me-4">
@@ -48,7 +48,8 @@
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+
+        <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -219,13 +220,13 @@
         </footer>
 
         <!-- JAVASCRIPT FILES -->
-        <script src="/static/js/jquery.min.js"></script>
-        <script src="/static/js/popper.js"></script>
-<!--        <script src="/static/js/bootstrap.min.js"></script>-->
-        <script src="/static/js/jquery.backstretch.min.js"></script>
-        <script src="/static/js/jquery.magnific-popup.min.js"></script>
-        <script src="/static/js/magnific-popup-options.js"></script>
-        <script src="/static/js/click-scroll.js"></script>
-        <script src="/static/js/custom.js"></script>
+                <script src="{% static 'js/jquery.min.js'%}"></script>
+        <script src="{% static 'js/popper.js'%}"></script>
+        <script src="{% static 'js/bootstrap.min.js'%}"></script>
+        <script src="{% static 'js/jquery.backstretch.min.js'%}"></script>
+        <script src="{% static 'js/jquery.magnific-popup.min.js'%}"></script>
+        <script src="{% static 'js/magnific-popup-options.js'%}"></script>
+        <script src="{% static 'js/click-scroll.js'%}"></script>
+        <script src="{% static 'js/custom.js'%}"></script>
     </body>
 </html>
