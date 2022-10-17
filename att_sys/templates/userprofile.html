@@ -106,7 +106,7 @@
                         </div>
                     <br>
                     <div>
-                        <form  class="inline" method="POST">
+                        <form  class="inline" method="POST" >
                             {%csrf_token%}
                         From:<input type="date"  class="mx-2" name="fromdate"/>
                         To:<input type="date" class="mx-2" name="todate"/>
@@ -114,53 +114,55 @@
                         </form>
                     </div>
                     <div style="overflow-x: auto;">
-                    <table class="styled-table" border="1">
-                            <tr>
-                                <th>Employee</th>
-                                <th>Date</th>
-                                <th>Check-in</th>
-                                <th>Check-out</th>
-                                <th>Working-Hours</th>
-                                <th>Daily-Tasks</th>
-                                <th>Update</th>
-                                <th>Delete</th>
-                            </tr>
-                            {% for x in user %}
-                            <tr>
-                                <td>{{x.employee.ename}}</td>
-                                <td>{{x.date}}</td>
-                                <td>{{x.chin}}</td>
-                                <td>{{x.chout}}</td>
-                                <td>{{ dwh|get_item:x.id }}</td>
+                        {% if user  %}
+                        <table class="styled-table" border="1">
+                                <tr>
+                                    <th>Employee</th>
+                                    <th>Date</th>
+                                    <th>Check-in</th>
+                                    <th>Check-out</th>
+                                    <th>Working-Hours</th>
+                                    <th>Daily-Tasks</th>
+                                    <th>Update</th>
+                                    <th>Delete</th>
+                                </tr>
+                                {% for x in user %}
+                                <tr>
+                                    <td>{{x.employee.ename}}</td>
+                                    <td>{{x.date}}</td>
+                                    <td>{{x.chin}}</td>
+                                    <td>{{x.chout}}</td>
+                                    <td>{{ dwh|get_item:x.id }}</td>
+                                    <td>{{x.remarks }}</td>
+    <!--                                <button type="button" class="det" data-bs-toggle="modal" data-bs-target="#{{x.date}}">Tasks</button>-->
 
-                                <td>{{x.remarks }}
-<!--                                <button type="button" class="det" data-bs-toggle="modal" data-bs-target="#{{x.date}}">Tasks</button>-->
-
-<!--                                &lt;!&ndash; Modal &ndash;&gt;-->
-<!--                                <div class="modal fade" id="{{x.date}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--                                  <div class="modal-dialog">-->
-<!--                                    <div class="modal-content">-->
-<!--                                      <div class="modal-header">-->
-<!--                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>-->
-<!--                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--                                      </div>-->
-<!--                                      <div class="modal-body">-->
-<!--                                        ...-->
-<!--                                      </div>-->
-<!--                                      <div class="modal-footer">-->
-<!--                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-<!--                                        <button type="button" class="btn btn-primary">Save changes</button>-->
-<!--                                      </div>-->
-<!--                                    </div>-->
-<!--                                  </div>-->
-<!--                                </div>-->
-                                </td>
-                                <td><a class="det" href="/att_sys/hrprofile/userprofile/update/{{x.id}}">Update</a></td>
-                                <td><a class='del' href="/att_sys/hrprofile/userprofile/deleteatt/{{x.id}}">Delete</a></td>
-                            </tr>
-                            {% endfor %}
-                        </table>
-
+    <!--                                &lt;!&ndash; Modal &ndash;&gt;-->
+    <!--                                <div class="modal fade" id="{{x.date}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+    <!--                                  <div class="modal-dialog">-->
+    <!--                                    <div class="modal-content">-->
+    <!--                                      <div class="modal-header">-->
+    <!--                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>-->
+    <!--                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+    <!--                                      </div>-->
+    <!--                                      <div class="modal-body">-->
+    <!--                                        ...-->
+    <!--                                      </div>-->
+    <!--                                      <div class="modal-footer">-->
+    <!--                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+    <!--                                        <button type="button" class="btn btn-primary">Save changes</button>-->
+    <!--                                      </div>-->
+    <!--                                    </div>-->
+    <!--                                  </div>-->
+    <!--                                </div>-->
+    <!--                                    </td>-->
+                                    <td><a class="det" href="/att_sys/hrprofile/userprofile/update/{{x.id}}">Update</a></td>
+                                    <td><a class='del' href="/att_sys/hrprofile/userprofile/deleteatt/{{x.id}}">Delete</a></td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        {%else%}
+                        <h3>No entry found for this date.</h3>
+                        {%endif%}
 
                     </div>
                         <br>

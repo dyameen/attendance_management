@@ -143,9 +143,18 @@ def user_profile (request,id):
     if request.method == "POST":
         fromdate = request.POST['fromdate']
         todate = request.POST['todate']
+        today = datetime.datetime.now ().date ()
+
         print (fromdate,todate)
-        user = Attendance.objects.filter (
-            Q (employee_id = id) & Q (date__gte = fromdate) & Q (date__lte = todate)).order_by ('date')
+        if fromdate and todate:
+            user = Attendance.objects.filter (
+                Q (employee_id = id) & Q (date__gte = fromdate) & Q (date__lte = todate)).order_by ('date')
+        elif fromdate:
+            user = Attendance.objects.filter (
+                (Q (employee_id = id) & Q (date__gte = fromdate) & Q (date__lte = today))).order_by ('date')
+        elif todate:
+            user = Attendance.objects.filter (
+                (Q (employee_id = id) & Q (date__lte = todate) & Q (date__lte = todate))).order_by ('date')
         print (user,'=====>')
         context['user'] = user
         print (context)
