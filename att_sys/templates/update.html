@@ -96,7 +96,7 @@
                                 {%endfor%}
                             {%endif%}
 
-                            <form method="POST" novalidate>
+                            <form method="POST">
                                         <!-- Very Important csrf Token -->
                                         {% csrf_token %}
                                         {{ form.as_p }}

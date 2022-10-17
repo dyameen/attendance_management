@@ -16,8 +16,8 @@ class Update (forms.ModelForm):
         fields = ('date','chin','chout')
         widgets = {
             'date': forms.DateInput(attrs = {'type': 'date'}),
-            'chin': forms.TimeInput(attrs = {'type': 'time'}),
-            'chout': forms.TimeInput(attrs = {'type': 'time'}),
+            'chin': forms.TimeInput(attrs = {'type': 'time','required': True}),
+            'chout': forms.TimeInput(attrs = {'type': 'time','required': True}),
         }
         labels = {
             'date': 'Date:',
