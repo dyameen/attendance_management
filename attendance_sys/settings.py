@@ -103,8 +103,6 @@ DATABASES = {
         'PASSWORD':'',
         'HOST': 'localhost',
         'PORT': '3306',
-        'TIME_ZONE': 'Asia/Kolkata',
-
     }
 }
 
