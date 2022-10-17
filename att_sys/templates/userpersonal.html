@@ -125,11 +125,15 @@
                                 {% endfor %}
                             </table>
                     </div>
+                    {%for i in att%}
                         {% if att|length == 0 %}
                             <a class="det1" href="/att_sys/userpersonal/add/">Check-in</a>
-                        {%else%}
+                        {% elif i.chout is None %}
                             <a class="det1" href="/att_sys/userpersonal/add/">Check-out</a>
+                        {%else%}
+                    <h3>Already Checked-Out</h3>
                         {%endif%}
+                    {%endfor%}
                         <br><br>
                         {%if emp.designation == 'HR-Manager'%}
                         <a class="det1" href="/att_sys/hrprofile/">Back</a>
@@ -164,7 +168,7 @@
                         <h5 class="text-white mb-3">Get in Touch</h5>
 
                         <p class="text-white mb-1">
-                        513,Ratanjali Square, Anand Nagar, Near Gloria Restaurant, Ahmedabad.</p>
+                        513,Ratnanjali Square, Anand Nagar, Near Gloria Restaurant, Ahmedabad.</p>
 
                         <p class="text-white mb-1"><a href="mailto:email@company.com" class="footer-link">contact@sheltersoft.in</a><p>
                     </div>
