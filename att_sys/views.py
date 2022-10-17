@@ -231,7 +231,7 @@ def add (request):
                     Attendance.objects.filter (id = i.id).update (chout = chout,remarks = remarks)
             else:
                 print ("In checkin =====>")
-                user = Attendance (employee = emp,date = date,chin = chin,remarks = "Remains")
+                user = Attendance (employee = emp,date = date,chin = chin,chout= None,remarks = "Remains")
                 user.save ()
             messages.success (request,"Successfully Add!")
             return HttpResponseRedirect (f'/att_sys/userpersonal/{emp.id}',{'form': fm,'att': att})
