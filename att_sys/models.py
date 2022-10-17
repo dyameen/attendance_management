@@ -33,4 +33,4 @@ class Attendance(models.Model):
     date = models.DateField(default=django.utils.timezone.now,null=True)
     chin = models.TimeField(default=timezone.now,null = True, blank=True)
     chout = models.TimeField(default=timezone.now,null = True, blank=True)
-    remarks = models.CharField(max_length = 255,null = True,blank = True)
+    remarks = models.CharField(max_length =700,null = True,blank = True)

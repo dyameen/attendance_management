@@ -109,6 +109,8 @@
                                     <th>Check-in</th>
                                     <th>Check-out</th>
                                     <th>Working-Hours</th>
+                                    <th>Daily-Tasks</th>
+
                                 </tr></div>
                                 {% for x in user %}
                                 <tr>
@@ -117,6 +119,8 @@
                                     <td>{{x.chin}}</td>
                                     <td>{{x.chout}}</td>
                                     <td>{{ dwh|get_item:x.id }}</td>
+                                    <td>{{x.remarks }}</td>
+
                                 </tr>
                                 {% endfor %}
                             </table>
