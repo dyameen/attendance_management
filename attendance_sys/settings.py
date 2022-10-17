@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django_celery_beat',
     'corsheaders',
     'rest_framework',
-    'att_sys',
+    'att_sys.apps.AttSysConfig',
     'django_extensions',
 ]
 
@@ -148,7 +148,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (css, JavaScript, Images)

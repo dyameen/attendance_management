@@ -45,8 +45,8 @@ class Add (forms.ModelForm):
         fields = ('date','chin','chout','remarks')
         widgets = {
             'date': forms.DateInput(attrs = {'type': 'date','readonly':'True'}),
-            'chin': forms.TimeInput(attrs = {'type': 'time','required': True}),
-            'chout': forms.TimeInput(attrs = {'type': 'time','required': True}),
+            'chin': forms.TimeInput(attrs = {'type': 'time','readonly':'True','required': True}),
+            'chout': forms.TimeInput(attrs = {'type': 'time','readonly':'True','required': True}),
             'remarks': forms.Textarea(attrs = {'type': 'text','placeholder':"Write your progress here...",'cols': 60,'rows':3,'required': True}),
         }
         labels = {
