@@ -153,7 +153,7 @@ USE_TZ = False
 
 # Static files (css, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-STATIC_ROOT = '/attendance_system/static/'
+STATIC_ROOT = 'attendance_system/static/'
 STATIC_URL = 'static/'
 STATICFILES_DIRS = (
         BASE_DIR / "static",
