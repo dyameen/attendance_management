@@ -229,11 +229,14 @@ def add (request):
                 for i in att:
                     print ("In checkout =====>")
                     Attendance.objects.filter (id = i.id).update (chout = chout,remarks = remarks)
+                    msg = "Successfully Checked-Out !!!"
+
             else:
                 print ("In checkin =====>")
                 user = Attendance (employee = emp,date = date,chin = chin,chout= None,remarks = "Remains")
                 user.save ()
-            messages.success (request,"Successfully Add!")
+                msg = "Successfully Checked-In !!!"
+            messages.success (request,msg)
             return HttpResponseRedirect (f'/att_sys/userpersonal/{emp.id}',{'form': fm,'att': att})
         else:
             print ('--------------> data ',fm)
