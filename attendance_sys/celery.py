@@ -23,8 +23,8 @@ def debug_task (self):
 app.conf.beat_schedule = {
     'AutoCheckOut': {
         'task': 'att_sys.tasks.auto_checkout',
-        'schedule': crontab(minute="0", hour="0", day_of_week="mon-fri"),
-        # 'schedule': crontab (minute = '*/1'),
+       # 'schedule': crontab(minute="0", hour="0", day_of_week="mon-fri"),
+        'schedule': crontab (minute = '*/1'),
     },
 
     'AutoReload': {

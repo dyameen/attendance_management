@@ -31,6 +31,6 @@ class Employee(models.Model):
 class Attendance(models.Model):
     employee = models.ForeignKey(Employee,on_delete = models.CASCADE, related_name = 'emp_attendance')
     date = models.DateField(default=django.utils.timezone.now,null=True)
-    chin = models.TimeField(default=timezone.now,null = True, blank=True)
-    chout = models.TimeField(default=timezone.now,null = True, blank=True)
+    chin = models.TimeField(default=datetime.datetime.now,null = True, blank=True)
+    chout = models.TimeField(default=datetime.datetime.now,null = True, blank=True)
     remarks = models.CharField(max_length =700,null = True,blank = True)
