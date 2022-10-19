@@ -148,7 +148,11 @@ USE_I18N = True
 
 USE_L10N = True
 
+<<<<<<< Updated upstream
 USE_TZ =  True
+=======
+USE_TZ = True
+>>>>>>> Stashed changes
 
 
 # Static files (css, JavaScript, Images)
