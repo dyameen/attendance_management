@@ -97,9 +97,9 @@ def hr_profile (request):
         print (role)
         print (get_ename)
         if role and get_ename:
-            user = Employee.objects.filter (Q (designation = role) & Q (ename = get_ename))
+            users = Employee.objects.filter (Q (designation = role) & Q (ename = get_ename))
         elif role or get_ename:
-            user = Employee.objects.filter (Q (designation = role) | Q (ename = get_ename))
+            users = Employee.objects.filter (Q (designation = role) | Q (ename = get_ename))
 
         context = {
             'users':users,

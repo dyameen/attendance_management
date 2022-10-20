@@ -133,7 +133,7 @@
 
                     </div>
                     <div style="overflow-x: auto; margin: auto;">
-                        {% if user  %}
+                        {% if users  %}
                         <table class= "styled-table" border="1">
                         <tr>
                             <th>ID</th>
@@ -150,11 +150,7 @@
                         </tr>
                         {% endfor %}
                         </table>
-                        {% else %}
-                                <h1> User Not Found </h1>
-                        {%endif%}
-                    </div>
-                    <hr>
+                        <hr>
                     <nav >
                      <ul class="pagination">
 
@@ -172,6 +168,11 @@
                     {%endif%}
                     </ul>
                     </nav>
+                        {% else %}
+                                <h1> User Not Found </h1>
+                        {%endif%}
+                    </div>
+
                 </div>
             </section>
         </main>
