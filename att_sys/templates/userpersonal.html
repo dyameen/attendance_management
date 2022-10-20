@@ -124,13 +124,14 @@
                                 {% endfor %}
                             </table>
                     </div>
-                    {%for i in att%}
                         {% if att|length == 0 %}
                             <a class="det1" href="/att_sys/userpersonal/add/">Check-in</a>
-                        {% elif i.chout is None %}
+                        {%endif%}
+                    {%for i in att%}
+                        {% if i.chout is None %}
                             <a class="det1" href="/att_sys/userpersonal/add/">Check-out</a>
                         {%else%}
-                    <h3>Already Checked-Out</h3>
+                        <h3>Already Checked-Out</h3>
                         {%endif%}
                     {%endfor%}
                         <br><br>

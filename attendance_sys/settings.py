@@ -16,10 +16,8 @@ import environ
 env = environ.Env ()
 environ.Env.read_env ()
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+BASE_DIR = Path (__file__).resolve ().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -31,8 +29,6 @@ SECRET_KEY = 'django-insecure-11%ep-xmu$9v8ad^q^2)1_ojxlvuq#2j=6-%-$e%)-w%%^ed_r
 DEBUG = True
 
 ALLOWED_HOSTS = ['43.205.113.217','127.0.0.1']
-
-
 
 # Application definition
 
@@ -84,7 +80,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'attendance_sys.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -100,7 +95,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'attendance_db',
         'USER': 'root',
-        'PASSWORD':'',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -136,7 +131,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -148,19 +142,14 @@ USE_I18N = True
 
 USE_L10N = True
 
-<<<<<<< Updated upstream
-USE_TZ =  True
-=======
 USE_TZ = True
->>>>>>> Stashed changes
-
 
 # Static files (css, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 STATIC_ROOT = 'attendance_system/static/'
 STATIC_URL = 'static/'
 STATICFILES_DIRS = (
-        BASE_DIR / "static",
+    BASE_DIR / "static",
 )
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -192,10 +181,10 @@ EMAIL_HOST_PASSWORD = env ('EMAIL_HOST_PASSWORD')
 
 # rest API
 REST_FRAMEWORK = {
-     'DEFAULT_AUTHENTICATION_CLASSES': [
-         #'rest_framework.authentication.TokenAuthentication',
-         #'knox.auth.TokenAuthentication',
-         'rest_framework_simplejwt.authentication.JWTAuthentication',
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.TokenAuthentication',
+        # 'knox.auth.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
 
-     ],
-    }
+    ],
+}

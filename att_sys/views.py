@@ -193,7 +193,7 @@ def update (request,id):
 def delete (request,id):
     print ('In delete =====>')
     user = Employee.objects.get (id = id)
-    print('------->',user)
+    print ('------->',user)
     user.delete ()
     return HttpResponseRedirect (reverse ('hrprofile'))
 
@@ -233,7 +233,7 @@ def add (request):
 
             else:
                 print ("In checkin =====>")
-                user = Attendance (employee = emp,date = date,chin = chin,chout= None,remarks = "Remains")
+                user = Attendance (employee = emp,date = date,chin = chin,chout = None,remarks = "Remains")
                 user.save ()
                 msg = "Successfully Checked-In !!!"
             messages.success (request,msg)
@@ -254,7 +254,7 @@ def user_personal (request,id):
     emp = Employee.objects.get (user = request.user)
     print ('Employee in user_personal =====>',emp)
     att = Attendance.objects.filter (Q (employee = emp) & Q (date = today))
-
+    print (att,"===>")
     if emp.id == id:
         user = Attendance.objects.filter (employee_id = id).order_by ('date')
         dwh = {}
@@ -328,6 +328,7 @@ class showall (APIView):
     #     print(fm)
     # return render (request,"add.html",{'name': request.user,'form': fm ,'emp':emp,'session':session})
 
+
 # hr_profile without checkin implementation
 
 # @csrf_exempt
@@ -363,8 +364,9 @@ class showall (APIView):
 #     request.session['count'] = 0
 #     request.session.modified = True
 
+
 # for creating Json data:
-def test_vue(request):
+def test_vue (request):
     print ("In user_personal =====>")
     today = datetime.datetime.now ().date ()
     emp = Employee.objects.get (user = request.user)
@@ -398,8 +400,6 @@ def test_vue(request):
             'att': att,
         }
 
-
         return render (request,'vue_app/test.html')
     else:
         return render (request,'vue_app/test.html')
-
