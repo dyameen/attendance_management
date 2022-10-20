@@ -98,7 +98,7 @@
                     <h3 class="ribbon1">Employee list</h3>
                     <br>
                     </div>
-                    <div class="div1" >
+                    <div class="container" >
                         <form action=""  method="POST">
                             {% csrf_token %}
                             <select name="role">
@@ -115,12 +115,13 @@
                             </select>
 
                             <button class="det1" type="submit">Filter</button>
-                        </form>
+
                         {% if att|length == 0 %}
-                         <a class="det1" style="margin-left:765px" href="/att_sys/userpersonal/add/">Check-in</a>
+                         <a class="det1 res"  href="/att_sys/userpersonal/add/">Check-in</a>
                         {%else%}
-                        <a class="det1" style="margin-left:765px" href="/att_sys/userpersonal/add/">Check-out</a>
+                        <a class="det1 res"  href="/att_sys/userpersonal/add/">Check-out</a>
                         {%endif%}
+                               </form>
                     </div>
                     <div>
                     {% if messages %}
@@ -140,7 +141,7 @@
                             <th>Check</th>
                             <th>Delete</th>
                         </tr>
-                        {% for x in user %}
+                        {% for x in users %}
                         <tr>
                             <td>{{x.id }}</td>
                             <td>{{x.ename}}: {{x.designation}}</td>
@@ -153,7 +154,24 @@
                                 <h1> User Not Found </h1>
                         {%endif%}
                     </div>
+                    <hr>
+                    <nav >
+                     <ul class="pagination">
 
+                    {%if users.has_previous%}
+                         <li class="page-item"><a class="page-link" href="?page=1">&laquo; First</a></li>
+                         <li class="page-item"><a class="page-link" href="?page={{users.previous_page_number}}">Prev</a></li>
+                    {%endif%}
+<!--                         <li class="page-item active"><a href="#" class="page-link">Page {{users.number}} of {{users.paginator.num_pages}}</a></li>-->
+                         {%for i in nums%}
+                         <li class="page-item"><a href="?page={{forloop.counter}}" class="page-link">{{forloop.counter}}</a></li>
+                         {%endfor%}
+                    {%if users.has_next%}
+                        <li class="page-item"><a class="page-link" href = "?page={{users.next_page_number}}">Next</a></li>
+                        <li class="page-item"><a class="page-link" href = "?page={{users.paginator.num_pages}}">Last &raquo;</a></li>
+                    {%endif%}
+                    </ul>
+                    </nav>
                 </div>
             </section>
         </main>

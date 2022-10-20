@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import HttpResponseRedirect,HttpResponse
 from django.shortcuts import render
@@ -70,7 +71,7 @@ def logout_profile (request):
 @login_required (login_url = "/att_sys/login/")
 def hr_profile (request):
     print ('In hr_profile =====>')
-    user = Employee.objects.exclude (id = 1)
+    user = Employee.objects.all ()
     emp = Employee.objects.get (user = request.user.id)
     today = datetime.datetime.now ().date ()
     att = Attendance.objects.filter (Q (employee = emp) & Q (date = today))
@@ -84,6 +85,11 @@ def hr_profile (request):
     ename = list (ename)
     print ('ename =====>',ename)
 
+    p = Paginator (Employee.objects.all (),10)
+    page = request.GET.get ('page')
+    users = p.get_page (page)
+    nums = "a" * users.paginator.num_pages
+
     if request.method == "POST":
         role = request.POST['role']
         get_ename = request.POST['ename']
@@ -96,6 +102,8 @@ def hr_profile (request):
             user = Employee.objects.filter (Q (designation = role) | Q (ename = get_ename))
 
         context = {
+            'users':users,
+            'nums':nums,
             'user': user,
             'designation': designation,
             'emp': emp,
@@ -106,7 +114,7 @@ def hr_profile (request):
 
     elif request.method == 'GET':
         return render (request,'hrprofile.html',
-                       {'user': user,'designation': designation,'emp': emp,'att': att,'ename': ename})
+                       {'users':users,'nums':nums,'user': user,'designation': designation,'emp': emp,'att': att,'ename': ename})
     else:
         return HttpResponse ('An Exception Occurred')
 
