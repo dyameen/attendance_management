@@ -1151,3 +1151,11 @@ button:focus:not(:focus-visible) {
         .div1{
            display: -webkit-inline-box;
         }
+
+        .res{
+            position: relative;
+            float: right;
+            padding: inherit;
+    }
+
+
