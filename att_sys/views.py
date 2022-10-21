@@ -125,6 +125,12 @@ def user_profile (request,id):
     user = Attendance.objects.filter (employee_id = id).order_by ('date')
     emp = Employee.objects.get (id = id)
     print ('Employee in user_profile =====>',emp)
+
+    p = Paginator (Attendance.objects.filter (employee_id = id).order_by ('date'),10)
+    page = request.GET.get ('page')
+    users = p.get_page (page)
+    nums = "a" * users.paginator.num_pages
+
     dwh = {}
     for i in user:
         t1 = i.chin
@@ -143,6 +149,8 @@ def user_profile (request,id):
     twh = sum (dwh.values ())
     context = {
         'user': user,
+        'users': users,
+        'nums': nums,
         'name': request.user,
         'emp': emp,
         'dwh': dwh,
@@ -155,20 +163,20 @@ def user_profile (request,id):
 
         print (fromdate,todate)
         if fromdate and todate:
-            user = Attendance.objects.filter (
+            users = Attendance.objects.filter (
                 Q (employee_id = id) & Q (date__gte = fromdate) & Q (date__lte = todate)).order_by ('date')
         elif fromdate:
-            user = Attendance.objects.filter (
+            users = Attendance.objects.filter (
                 (Q (employee_id = id) & Q (date__gte = fromdate) & Q (date__lte = today))).order_by ('date')
         elif todate:
-            user = Attendance.objects.filter (
+            users = Attendance.objects.filter (
                 (Q (employee_id = id) & Q (date__lte = todate) & Q (date__lte = todate))).order_by ('date')
         print (user,'=====>')
-        context['user'] = user
+        context['users'] = users
         print (context)
         return render (request,"userprofile.html",context)
     else:
-        context['user'] = user
+        context['users'] = users
         return render (request,"userprofile.html",context)
 
 
